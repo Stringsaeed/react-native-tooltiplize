@@ -1,6 +1,6 @@
 {
   "name": "react-native-tooltiplize",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "react native tooltip like never before, using leading packages like `react-native-reanimated` v2, `framer-motion`, and `@gorhom/portal`",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
