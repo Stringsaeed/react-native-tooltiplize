@@ -175,6 +175,21 @@ const styles = StyleSheet.create({
 - [ ] Handle Safe Area and Window dimensions
 - [ ] Adding Support for more animation types
 - [ ] Unit Testing
+- [ ] Adding Cool pointer using `react-native-svg` with optional dependencies
+
+
+
+## Big Thanks 🙏 :
+
+this package is heavily inspired from:
+
+- [`react-native-portal`](https://github.com/gorhom/react-native-portal)
+
+- [`react-native-triangle`](https://github.com/Jpoliachik/react-native-triangle)
+
+- [`react-native-portalize`](https://github.com/jeremybarbet/react-native-portalize)
+
+
 
 ## Contributing
 
