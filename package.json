@@ -1,7 +1,7 @@
 {
   "name": "react-native-tooltiplize",
   "version": "0.1.0",
-  "description": "test",
+  "description": "react native tooltip like never before, using leading packages like `react-native-reanimated` v2, `framer-motion`, and `@gorhom/portal`",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -38,7 +38,16 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "web",
+    "tooltip",
+    "tooltiplize",
+    "react-native-tooltiplize",
+    "react-native-tooltip",
+    "react-native-tooltip-lib",
+    "popover",
+    "react-native-popover",
+    "react-native-popover-view"
   ],
   "repository": "https://github.com/Stringsaeed/react-native-tooltiplize",
   "author": "Muhammed Saeed <Stringsaeed@gmail.com> (https://github.com/Stringsaeed)",
@@ -53,6 +62,7 @@
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7",
     "@commitlint/config-conventional": "^17.0.2",
+    "@gorhom/portal": "^1.0.14",
     "@react-native-community/eslint-config": "^3.0.2",
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/jest": "^28.1.2",
@@ -68,6 +78,7 @@
     "react": "18.0.0",
     "react-native": "0.69.6",
     "react-native-builder-bob": "^0.20.1",
+    "react-native-reanimated": "^2.12.0",
     "release-it": "^15.0.0",
     "typescript": "^4.5.2"
   },
@@ -75,8 +86,10 @@
     "@types/react": "17.0.21"
   },
   "peerDependencies": {
+    "@gorhom/portal": "^1",
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-reanimated": "^2"
   },
   "jest": {
     "preset": "react-native",
@@ -150,5 +163,8 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "framer-motion": "^7.6.4"
   }
 }
