@@ -20,10 +20,14 @@ export interface OverlayProps
   overlayStyle?: ViewStyle;
 }
 
+export interface PointerWrapperProps extends PointerProps {
+  tooltipLayout?: LayoutRectangle;
+}
+
 export interface TooltipWrapperProps
   extends RequiredChildrenProp,
     AnimatedPresenceProp,
-    PointerProps {
+    Omit<PointerWrapperProps, 'tooltipLayout'> {
   offset?: number;
   childrenLayout?: LayoutRectangle;
 }

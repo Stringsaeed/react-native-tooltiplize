@@ -1,12 +1,11 @@
 import React, { useMemo } from 'react';
-import { StyleSheet, View, ViewStyle } from 'react-native';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import { useLayout } from '../../hooks';
+import { getPositionStyles } from '../../utils';
 import type { TooltipWrapperProps } from '../../types';
-import { getPointerWrapperStyle, getPositionStyles } from '../../utils';
 
-import Pointer from '../Pointer';
+import PointerWrapper from '../PointerWrapper';
 
 import styles from './styles';
 
@@ -37,22 +36,17 @@ const TooltipWrapperComponent: React.FC<TooltipWrapperProps> = (props) => {
     });
   }, [layout, position, props]);
 
-  const pointerStyles = useMemo(() => {
-    return StyleSheet.flatten<ViewStyle>([
-      styles.pointer,
-      getPointerWrapperStyle({ position, ...pointerProps }, layout),
-    ]);
-  }, [position, pointerProps, layout]);
-
   return (
     <Animated.View
       onLayout={onLayout}
       style={[styles.tooltipWrapper, positionStyles, stylez]}
     >
       {children}
-      <View style={pointerStyles}>
-        <Pointer {...pointerProps} position={position} />
-      </View>
+      <PointerWrapper
+        {...pointerProps}
+        tooltipLayout={layout}
+        position={position}
+      />
     </Animated.View>
   );
 };
