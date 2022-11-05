@@ -1,7 +1,14 @@
 import React from 'react';
+import * as Updates from 'expo-updates';
 import Tooltip from 'react-native-tooltiplize';
 import { PortalProvider } from '@gorhom/portal';
-import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  I18nManager,
+} from 'react-native';
 
 const App = () => {
   const [isVisible, toggle] = React.useReducer((state) => !state, false);
@@ -16,11 +23,21 @@ const App = () => {
     );
   }, []);
 
+  const switchLayout = React.useCallback(() => {
+    I18nManager.forceRTL(!I18nManager.isRTL);
+    Updates.reloadAsync();
+  }, []);
+
   return (
     <PortalProvider>
       <View style={styles.container}>
+        <TouchableOpacity onPress={switchLayout} style={styles.button}>
+          <Text style={styles.newFeatureText}>
+            {I18nManager.isRTL ? 'تغيير الواجهة' : 'Switch Layout'}
+          </Text>
+        </TouchableOpacity>
         <Tooltip
-          position="top"
+          position="right"
           offset={8}
           renderContent={renderContent}
           isVisible={isVisible}
@@ -45,6 +62,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 16,
   },
   tooltipContainer: {
     paddingHorizontal: 16,
@@ -65,11 +83,20 @@ const styles = StyleSheet.create({
   },
   pointer: { width: 16, height: 8 },
   newFeature: {
-    backgroundColor: 'white',
+    backgroundColor: '#f1f1f1',
     padding: 16,
     borderRadius: 8,
   },
   newFeatureText: {
     fontSize: 16,
+  },
+  button: {
+    height: 56,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'pink',
+    borderRadius: 8,
+    marginBottom: 16,
   },
 });

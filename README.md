@@ -19,6 +19,7 @@ react native tooltip like never before, using leading packages like `react-nativ
 - Far away from `Modal` issues
 - 60 FPS
 - Less boilerplate
+- RTL support by default (no need to worry about it)
 - Built for already in production app
 - And more...
 
