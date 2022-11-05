@@ -18,6 +18,7 @@ export function getSafeStyle(style?: ViewStyle) {
   const safeHeight = (isValidNumber(height) && height) || 0;
 
   return {
+    ...style,
     width: safeWidth,
     height: safeHeight,
   };
