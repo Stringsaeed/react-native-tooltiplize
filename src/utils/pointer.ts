@@ -69,10 +69,10 @@ export function getPointerStyles(props: PointerProps) {
 
 export function getPointerWrapperStyle(
   props: PointerProps,
-  layout: LayoutRectangle
+  layout: LayoutRectangle = { x: 0, y: 0, width: 0, height: 0 }
 ): ViewStyle {
   const { position = 'top', pointerStyle: pointerStyles } = props;
-  const { width, height } = getSafeStyle(pointerStyles);
+  const { width, height, ...restStyle } = getSafeStyle(pointerStyles);
 
   const size = isVerticalPosition(position) ? height : width;
 
@@ -84,28 +84,32 @@ export function getPointerWrapperStyle(
       return {
         top: -size,
         left: sideWhenVertical,
+        ...restStyle,
       };
     }
     case 'left': {
       return {
         right: -size,
         top: sideWhenHorizontal,
+        ...restStyle,
       };
     }
     case 'top': {
       return {
         bottom: -size,
         left: sideWhenVertical,
+        ...restStyle,
       };
     }
     case 'right': {
       return {
         left: -size,
         top: sideWhenHorizontal,
+        ...restStyle,
       };
     }
     default: {
-      return {};
+      return { ...restStyle };
     }
   }
 }
