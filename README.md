@@ -49,7 +49,7 @@ This library needs some peer dependencies to work properly. You need to install 
 - for `expo` users:
 
 ```bash
-expo install react-native-reanimated @gorhom/portal
+npx expo install react-native-reanimated @gorhom/portal
 ```
 
 
