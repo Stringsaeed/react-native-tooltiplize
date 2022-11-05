@@ -91,24 +91,22 @@ const App = () => {
   }, []);
 
   return (
-    <PortalProvider>
-      <View style={styles.container}>
-        <Tooltip
-          position="top"
-          offset={8}
-          renderContent={renderContent}
-          isVisible={isVisible}
-          withOverlay
-          onDismiss={toggle}
-          pointerStyle={styles.pointer}
-          pointerColor="green"
-        >
-          <TouchableOpacity onPress={toggle} style={styles.newFeature}>
-            <Text style={styles.newFeatureText}>This is new cool feature</Text>
-          </TouchableOpacity>
-        </Tooltip>
-      </View>
-    </PortalProvider>
+    <View style={styles.container}>
+      <Tooltip
+        position="top"
+        offset={8}
+        renderContent={renderContent}
+        isVisible={isVisible}
+        withOverlay
+        onDismiss={toggle}
+        pointerStyle={styles.pointer}
+        pointerColor="green"
+      >
+        <TouchableOpacity onPress={toggle} style={styles.newFeature}>
+          <Text style={styles.newFeatureText}>This is new cool feature</Text>
+        </TouchableOpacity>
+      </Tooltip>
+    </View>
   );
 };
 
