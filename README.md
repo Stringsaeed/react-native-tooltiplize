@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
 
 
 
-## Big Thanks 🙏 :
+## Big Thanks 🙏
 
 this package is heavily inspired from:
 
