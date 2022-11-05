@@ -5,9 +5,6 @@ const tooltipWrapperStyles = StyleSheet.create({
     position: 'absolute',
     opacity: 0,
   },
-  pointer: {
-    position: 'absolute',
-  },
 });
 
 export default tooltipWrapperStyles;
