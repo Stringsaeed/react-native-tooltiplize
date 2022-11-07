@@ -1,16 +1,14 @@
 import { usePresence } from 'framer-motion';
 import {
   runOnJS,
-  withTiming,
-  withSequence,
   useDerivedValue,
+  withSequence,
+  withTiming,
   WithTimingConfig,
 } from 'react-native-reanimated';
 
-export default function useAnimatedPresence(
-  timingConfig: WithTimingConfig = {
-    duration: 300,
-  }
+export default function useReanimated2Presence(
+  timingConfig: WithTimingConfig = { duration: 50 }
 ) {
   const [isPresent, safeToRemove] = usePresence();
 

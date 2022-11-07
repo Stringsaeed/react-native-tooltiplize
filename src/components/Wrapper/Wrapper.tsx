@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { useAnimatedPresence } from '../../hooks';
-import type { WrapperProps } from '../../types';
+import { useAnimatedPresence } from '../../animated';
+import type { AnimatedPresenceProp, WrapperProps } from '../../types';
 
 import Overlay from '../Overlay';
 import TooltipWrapper from '../TooltipWrapper';
@@ -12,9 +12,13 @@ const WrapperComponent: React.FC<WrapperProps> = (props) => {
     onDismiss,
     children,
     overlayStyle,
+    timingConfig,
     ...tooltipWrapperProps
   } = props;
-  const animatedPresence = useAnimatedPresence();
+  const animatedPresence = useAnimatedPresence(
+    // @ts-ignore
+    timingConfig
+  ) as AnimatedPresenceProp['animatedPresence'];
 
   const renderTooltipWrapper = () => (
     <TooltipWrapper

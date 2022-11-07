@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
-import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 
 import { useLayout } from '../../hooks';
 import { getPositionStyles } from '../../utils';
 import type { TooltipWrapperProps } from '../../types';
+import { AnimatedView, useAnimatedStyles } from '../../animated';
 
 import PointerWrapper from '../PointerWrapper';
 
@@ -19,10 +19,7 @@ const TooltipWrapperComponent: React.FC<TooltipWrapperProps> = (props) => {
 
   const { onLayout, ...layout } = useLayout();
 
-  const stylez = useAnimatedStyle(
-    () => ({ opacity: animatedPresence?.value }),
-    [animatedPresence]
-  );
+  const stylez = useAnimatedStyles(animatedPresence);
 
   const positionStyles = useMemo(() => {
     const { offset, childrenLayout, pointerStyle: pointerStyles } = props;
@@ -37,7 +34,7 @@ const TooltipWrapperComponent: React.FC<TooltipWrapperProps> = (props) => {
   }, [layout, position, props]);
 
   return (
-    <Animated.View
+    <AnimatedView
       onLayout={onLayout}
       style={[styles.tooltipWrapper, positionStyles, stylez]}
     >
@@ -47,7 +44,7 @@ const TooltipWrapperComponent: React.FC<TooltipWrapperProps> = (props) => {
         tooltipLayout={layout}
         position={position}
       />
-    </Animated.View>
+    </AnimatedView>
   );
 };
 

@@ -1,12 +1,15 @@
 import type { ReactNode } from 'react';
-import type { SharedValue } from 'react-native-reanimated';
+import type { Animated } from 'react-native';
+import type Reanimated from 'react-native-reanimated';
 
 export interface PositionProp {
   position?: 'top' | 'bottom' | 'left' | 'right';
 }
 
 export interface AnimatedPresenceProp {
-  animatedPresence?: SharedValue<number>;
+  animatedPresence:
+    | (Animated.Value & Reanimated.SharedValue<number>)
+    | undefined;
 }
 
 export interface RequiredChildrenProp {

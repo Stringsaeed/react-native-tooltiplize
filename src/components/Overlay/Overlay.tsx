@@ -1,8 +1,8 @@
 import React from 'react';
-import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
 import type { OverlayProps } from '../../types';
+import { useAnimatedStyles, AnimatedView } from '../../animated';
 
 const Overlay: React.FC<OverlayProps> = ({
   children,
@@ -10,18 +10,13 @@ const Overlay: React.FC<OverlayProps> = ({
   onDismiss,
   overlayStyle,
 }) => {
-  const stylez = useAnimatedStyle(
-    () => ({
-      opacity: animatedPresence?.value,
-    }),
-    [animatedPresence]
-  );
+  const stylez = useAnimatedStyles(animatedPresence);
 
   return (
     <TouchableWithoutFeedback onPress={onDismiss}>
-      <Animated.View style={[styles.overlay, overlayStyle, stylez]}>
+      <AnimatedView style={[styles.overlay, overlayStyle, stylez]}>
         {children}
-      </Animated.View>
+      </AnimatedView>
     </TouchableWithoutFeedback>
   );
 };

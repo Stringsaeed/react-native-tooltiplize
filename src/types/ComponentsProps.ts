@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { LayoutRectangle, ViewStyle } from 'react-native';
+import type { LayoutRectangle, ViewStyle, Animated } from 'react-native';
 import type { WithTimingConfig } from 'react-native-reanimated';
 
 import type {
@@ -37,7 +37,7 @@ export interface WrapperProps
     Omit<TooltipWrapperProps, 'children' | 'animatedPresence'>,
     Pick<OverlayProps, 'onDismiss' | 'overlayStyle'> {
   withOverlay?: boolean;
-  timingConfig?: WithTimingConfig;
+  timingConfig?: WithTimingConfig | Animated.TimingAnimationConfig;
 }
 
 export interface TooltipProps
