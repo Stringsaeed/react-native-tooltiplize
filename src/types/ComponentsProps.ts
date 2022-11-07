@@ -27,6 +27,7 @@ export interface OverlayProps
 
 export interface PointerWrapperProps extends PointerProps {
   tooltipLayout?: LayoutRectangle;
+  renderPointer?: (props: PointerProps) => ReactNode;
 }
 
 export interface TooltipWrapperProps
