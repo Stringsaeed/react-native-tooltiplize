@@ -1,16 +1,22 @@
 import React, { cloneElement, Fragment } from 'react';
+import { View } from 'react-native';
 import { Portal } from '@gorhom/portal';
 import { AnimatePresence } from 'framer-motion';
-import { StyleSheet, View } from 'react-native';
 
 import { useLayout } from './hooks';
 
-import { Wrapper } from './components';
 import type { TooltipProps } from './types';
+import { Wrapper, ChildWrapper } from './components';
 
 const Tooltip: React.FC<TooltipProps> = (props) => {
-  const { children, isVisible, renderContent, childrenStyle, ...restProps } =
-    props;
+  const {
+    children,
+    isVisible,
+    renderContent,
+    withOverlay,
+    childrenStyle,
+    ...restProps
+  } = props;
   const { onLayout, ...layout } = useLayout();
 
   return (
@@ -22,19 +28,17 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
         <AnimatePresence>
           {isVisible && (
             <Fragment>
-              <Wrapper {...restProps} childrenLayout={layout}>
+              <Wrapper
+                {...restProps}
+                withOverlay={withOverlay}
+                childrenLayout={layout}
+              >
                 {renderContent()}
               </Wrapper>
-              {restProps?.withOverlay && (
-                <View
-                  style={[
-                    styles.absolute,
-                    childrenStyle,
-                    { top: layout.y, left: layout.x },
-                  ]}
-                >
-                  {cloneElement(children as React.ReactElement)}
-                </View>
+              {withOverlay && (
+                <ChildWrapper childrenStyle={childrenStyle} layout={layout}>
+                  {children}
+                </ChildWrapper>
               )}
             </Fragment>
           )}
@@ -45,9 +49,3 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
 };
 
 export default Tooltip;
-
-const styles = StyleSheet.create({
-  absolute: {
-    position: 'absolute',
-  },
-});

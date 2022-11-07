@@ -1,5 +1,10 @@
 import type { ReactNode } from 'react';
-import type { LayoutRectangle, ViewStyle, Animated } from 'react-native';
+import type {
+  LayoutRectangle,
+  ViewStyle,
+  Animated,
+  StyleProp,
+} from 'react-native';
 import type { WithTimingConfig } from 'react-native-reanimated';
 
 import type {
@@ -17,7 +22,7 @@ export interface OverlayProps
   extends RequiredChildrenProp,
     AnimatedPresenceProp {
   onDismiss?: () => void;
-  overlayStyle?: ViewStyle;
+  overlayStyle?: StyleProp<ViewStyle>;
 }
 
 export interface PointerWrapperProps extends PointerProps {
@@ -40,10 +45,15 @@ export interface WrapperProps
   timingConfig?: WithTimingConfig | Animated.TimingAnimationConfig;
 }
 
+export interface ChildWrapperProps extends RequiredChildrenProp {
+  layout?: LayoutRectangle;
+  childrenStyle?: StyleProp<ViewStyle>;
+}
+
 export interface TooltipProps
-  extends Omit<WrapperProps, 'children' | 'childrenLayout'> {
+  extends Omit<WrapperProps, 'children' | 'childrenLayout'>,
+    Pick<ChildWrapperProps, 'childrenStyle'> {
   children: ReactNode;
   isVisible: boolean;
   renderContent: () => ReactNode;
-  childrenStyle?: ViewStyle;
 }
